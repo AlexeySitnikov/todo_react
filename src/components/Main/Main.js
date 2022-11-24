@@ -1,7 +1,12 @@
-const Main = ()=>{
+const Main = ({todos})=>{
   return (
     <main>
-      Main
+      <ul class="list-group">
+        {
+          todos.map()
+        }
+        <li class="list-group-item">An item</li>
+      </ul>
     </main>
   );
 }
