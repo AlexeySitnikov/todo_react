@@ -7,7 +7,10 @@ const Main = ({todos, deleteTodo, changeTodoStatus})=>{
         {
           todos.map((todo, i) => (
             <li key={todo.id} className="list-group-item d-flex justify-content-between">
-             <span className={`d-flex align-items-center ${todo.status ? styles.done:''}`}>{i+1}. {todo.title} </span>
+             <div className={`d-flex align-items-center`}>
+              <span className='me-4'>{i+1}. </span>
+              <span className={`${todo.status ? styles.done:''}`}>{todo.title} </span>
+             </div>
              <div>
                 <button onClick={()=>changeTodoStatus(todo.id)} type="button" className="btn mx-2 btn-success">Success</button>
                 <button onClick={()=>deleteTodo(todo.id)} type="button" className="btn btn-danger">Danger</button>
