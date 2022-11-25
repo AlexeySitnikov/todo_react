@@ -19,13 +19,29 @@ function App() {
 
   }
 
+  const deleteTodo = (id)=>{
+    setTodos(prev => prev.filter((todo)=>todo.id !== id))
+  }
+
+  const changeTodoStatus = (id)=>{
+    setTodos(prev=>prev.map((todo)=>{
+      if (todo.id === id){
+        return {
+          ...todo,
+          status: !todo.status
+        }
+      }
+      return todo;
+    }))
+  }
   //console.log({todos})
 
   return (
     <div className='container py-5'>
       <Header addNewTodoFunc = {addNewTodo}/>
       <hr />
-      <Main todos = {todos}/>
+      <Main changeTodoStatus={changeTodoStatus} deleteTodo={deleteTodo} todos = {todos}/>
+      <hr />
       <Footer />
     </div>
   );

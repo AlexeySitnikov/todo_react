@@ -8,6 +8,7 @@ export const Form = ({addNewTodoFunc})=>{
     e.preventDefault();
     if (input){
       addNewTodoFunc(input);
+      setInput('');
     }
   }
 
