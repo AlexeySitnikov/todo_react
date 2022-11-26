@@ -19,9 +19,7 @@ export const Form = ({addNewTodoFunc})=>{
         type="text" 
         value = {input} 
         placeholder="Title" 
-        className="form-control" 
-        id="exampleInputEmail1" 
-        aria-describedby="Add ToDo"
+        className="form-control"
         onChange = {(e) => setInput(e.target.value)}
         />
       </div>
