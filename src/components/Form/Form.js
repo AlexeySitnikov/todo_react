@@ -1,6 +1,6 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
-export const Form = ({addNewTodoFunc})=>{
+let Form = ({addNewTodoFunc})=>{
 
   const [input, setInput] = useState('');
 
@@ -26,4 +26,10 @@ export const Form = ({addNewTodoFunc})=>{
       <button type="submit" className="btn btn-primary">Add</button>
     </form>
   );
+}
+
+Form = React.memo(Form);
+
+export {
+  Form
 }
