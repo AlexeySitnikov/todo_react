@@ -1,59 +1,52 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
-import { TODOS_KEY_IN_LS } from "../utils/constants";
-import { expensiveFunc } from "../utils/expensiveFunc";
+import {
+  useCallback, useEffect, useState,
+} from 'react'
+import { TODOS_KEY_IN_LS } from '../utils/constants'
 
-export const useTodos = ()=>{
+export const useTodos = () => {
+  const [todos, setTodos] = useState([])
 
-  const [todos, setTodos] = useState([]);  
+  useEffect(() => {
+    const todosFromLS = localStorage.getItem(TODOS_KEY_IN_LS)
+    const prepareTodos = todosFromLS ? JSON.parse(todosFromLS) : []
+    if (prepareTodos.length) {
+      setTodos(prepareTodos)
+    }
+  }, [])
 
-  useEffect(()=>{
-    const todosFromLS = localStorage.getItem(TODOS_KEY_IN_LS);    
-    const prepareTodos = todosFromLS ? JSON.parse(todosFromLS) : [];
-    if (prepareTodos.length){
-      setTodos(prepareTodos);
-    }    
-  }, []);
-  
-  
+  useEffect(() => {
+    localStorage.setItem(TODOS_KEY_IN_LS, JSON.stringify(todos))
+  }, [todos])
 
-  useEffect(()=>{
-    localStorage.setItem(TODOS_KEY_IN_LS, JSON.stringify(todos));
-  }, [todos]);
-
-  const addNewTodo = useCallback((title) =>{
+  const addNewTodo = useCallback((title) => {
     const newTodo = {
       title,
       id: Date.now(),
-      status: false
+      status: false,
     }
 
-    setTodos(prev => [...prev, newTodo]);
+    setTodos((prev) => [...prev, newTodo])
+  }, [])
 
-  }, []);
-
-  const deleteTodo = (id)=>{
-    setTodos(prev => prev.filter((todo)=>todo.id !== id))
+  const deleteTodo = (id) => {
+    setTodos((prev) => prev.filter((todo) => todo.id !== id))
   }
 
-  const changeTodoStatus = (id)=>{
-    setTodos(prev=>prev.map((todo)=>{
-      if (todo.id === id){
+  const changeTodoStatus = (id) => {
+    setTodos((prev) => prev.map((todo) => {
+      if (todo.id === id) {
         return {
           ...todo,
-          status: !todo.status
+          status: !todo.status,
         }
       }
-      return todo;
+      return todo
     }))
   }
 
-  const clearAllTodos = useCallback(()=>{
-    setTodos([]);
-  }, []);
-
-  const expensiveValue = useMemo(()=>{
-    return expensiveFunc(todos.length)
-  }, [todos.length]);
+  const clearAllTodos = useCallback(() => {
+    setTodos([])
+  }, [])
 
   return {
     addNewTodo,
@@ -61,6 +54,5 @@ export const useTodos = ()=>{
     changeTodoStatus,
     todos,
     clearAllTodos,
-    expensiveValue
   }
 }

@@ -1,14 +1,13 @@
-import { Form } from "../Form/Form"
+import { Form } from '../Form/Form'
 
-const Header = ({addNewTodoFunc})=>{
-
+function Header({ addNewTodoFunc }) {
   return (
     <header>
-      <Form addNewTodoFunc = {addNewTodoFunc}/>
+      <Form addNewTodoFunc={addNewTodoFunc} />
     </header>
   )
 }
 
 export {
-  Header
+  Header,
 }
