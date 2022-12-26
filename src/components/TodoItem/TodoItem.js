@@ -21,5 +21,6 @@ export function TodoItem({
         <button onClick={() => deleteTodo(id)} type="button" className="btn btn-danger">Delete</button>
       </div>
     </li>
+
   )
 }
