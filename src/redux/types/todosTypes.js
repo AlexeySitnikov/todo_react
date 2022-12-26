@@ -1,4 +1,5 @@
 export const ADD_NEW_TODO = 'ADD_NEW_TODO'
+export const ADD_NEW_TODOS = 'ADD_NEW_TODOS'
 export const CHANGE_STATUS_TODO = 'CHANGE_STATUS_TODO'
 export const DELETE_TODO = 'DELETE_TODO'
 export const CLEAR_ALL_TODOS = 'CLEAR_ALL_TODOS'
