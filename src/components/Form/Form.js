@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { addNewTodoAC } from '../../redux/actionsCreators/todosAC'
 
-export const Form = React.memo(({ addNewTodoFunc }) => {
+export const Form = React.memo(() => {
   const [input, setInput] = useState('')
+  const dispatch = useDispatch()
 
   const submitHandler = (e) => {
     e.preventDefault()
     if (input) {
-      addNewTodoFunc(input)
+      dispatch(addNewTodoAC(input))
       setInput('')
     }
   }

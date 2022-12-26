@@ -1,9 +1,9 @@
 import { Form } from '../Form/Form'
 
-function Header({ addNewTodoFunc }) {
+function Header() {
   return (
     <header>
-      <Form addNewTodoFunc={addNewTodoFunc} />
+      <Form />
     </header>
   )
 }

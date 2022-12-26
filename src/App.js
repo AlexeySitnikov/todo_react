@@ -2,24 +2,15 @@ import './App.css'
 import { Footer } from './components/Footer/Footer'
 import { Header } from './components/Header/Header'
 import { Main } from './components/Main/Main'
-import { useTodos } from './customHooks/useTodos'
 
 function App() {
-  const {
-    addNewTodo, deleteTodo, changeTodoStatus, todos, clearAllTodos,
-  } = useTodos()
-
-  //  console.log({todos})
-
   return (
     <div className="container py-5">
-      <Header addNewTodoFunc={addNewTodo} />
+      <Header />
       <hr />
-      <Main changeTodoStatus={changeTodoStatus} deleteTodo={deleteTodo} todos={todos} />
+      <Main />
       <hr />
-      {/* {expensiveValue} */}
-      <hr />
-      <Footer clearAllTodos={clearAllTodos} />
+      <Footer />
     </div>
   )
 }

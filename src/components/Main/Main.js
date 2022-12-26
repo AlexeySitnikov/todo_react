@@ -1,12 +1,9 @@
 import { TodoList } from '../TodoList/TodoList'
 
-function Main({ todos, deleteTodo, changeTodoStatus }) {
-  if (todos.length === 0) {
-    return <p>Todo list is empty...</p>
-  }
+function Main() {
   return (
     <main>
-      <TodoList todos={todos} deleteTodo={deleteTodo} changeTodoStatus={changeTodoStatus} />
+      <TodoList />
     </main>
   )
 }

@@ -1,6 +1,11 @@
+import { useSelector } from 'react-redux'
 import { TodoItem } from '../TodoItem/TodoItem'
 
-export function TodoList({ todos, deleteTodo, changeTodoStatus }) {
+export function TodoList() {
+  const todos = useSelector((store) => store.todos)
+  if (!todos.length) {
+    return <p>Todo list is empty...</p>
+  }
   return (
     <ul className="list-group">
       {
@@ -9,8 +14,6 @@ export function TodoList({ todos, deleteTodo, changeTodoStatus }) {
               key={todo.id}
               {...todo}
               idx={i}
-              deleteTodo={deleteTodo}
-              changeTodoStatus={changeTodoStatus}
             />
           ))
         }
